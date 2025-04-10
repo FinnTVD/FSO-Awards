@@ -1,0 +1,13 @@
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 4.267vw;
+  }
+  /* ----------------------start header---------------------- */
+  header {
+    height: 19.5rem;
+  }
+  .header__overlay {
+    height: 1.9rem;
+  }
+  /* ----------------------end header---------------------- */
+}
