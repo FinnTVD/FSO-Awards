@@ -298,6 +298,7 @@ header {
 /* ----------------------start manager---------------------- */
 #manager {
   margin-top: 13.93rem;
+  position: relative;
 }
 .grid__manager {
   display: grid;

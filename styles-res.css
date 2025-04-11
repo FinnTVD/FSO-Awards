@@ -134,14 +134,17 @@
   .slides__manager {
     display: block;
     width: 100%;
-    height: 27.8rem;
+    /* height: 27.8rem; */
+    height:22.8rem;
     position: relative;
+    margin-top: 1.35rem;
   }
   .slogan__manager {
     width: 7rem;
     height: fit-content;
     position: absolute;
-    top: 5.32rem;
+    /* top: 5.32rem; */
+    top: 1.3rem;
     left: 0.82rem;
     pointer-events: none;
   }
@@ -166,7 +169,8 @@
   }
   .swiper__manager .card__manager img {
     width: 15.87819rem;
-    height: 21.66756rem;
+    /* height: 21.66756rem; */
+    height: auto;
     position: absolute;
     top: 0;
     right: 1rem;
@@ -235,7 +239,7 @@
   /* ----------------------start search page---------------------- */
   #search__page {
     width: 17.3125rem;
-    height: 1.875rem;
+    height: 2rem;
     padding: 0 0.5rem;
   }
   #search__page .icon {
