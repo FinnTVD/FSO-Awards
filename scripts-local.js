@@ -1205,8 +1205,6 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
 
       viewMoreBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        console.log("🚀 ~ viewMoreBtn.addEventListener ~ post:", post)
-        console.log("🚀 ~ viewMoreBtn.addEventListener ~ popup:", popup)
         popup.innerHTML = templatePopup(post);
         popup.classList.add("show");
 
@@ -1490,7 +1488,6 @@ function viewMoreModel(sectionSelector, data, groupKey) {
   });
 }
 viewMoreModel("#top__best", data, "tam-hau");
-viewMoreModel("#manager", data, "manager-of-the-year");
 
 function lazyLoadImages() {
   const images = document.querySelectorAll("img[loading=lazy]");

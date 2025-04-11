@@ -1180,14 +1180,14 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
           postEl.className = "swiper-slide";
           postEl.innerHTML = `
               <div class="card__manager">
-                <img src="${post.image}" alt="${post.title}" />
+                <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
                 <button class="view-more-btn">View More</button>
               </div>
             `;
         }else{
           postEl.className = "card__manager";
           postEl.innerHTML = `
-                <img src="${post.image}" alt="${post.title}" />
+                <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
                 <button class="view-more-btn">View More</button>
             `;
         }
@@ -1195,7 +1195,7 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
       }else{
         postEl.className = "post-item";
         postEl.innerHTML = `
-              <img src="${post.image}" alt="${post.title}" />
+              <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
               <h4 class="post-title">${post.title}</h4>
               <p class="post-role">${post.role}</p>
               <button class="view-more-btn">View More</button>
@@ -1205,8 +1205,6 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
 
       viewMoreBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        console.log("🚀 ~ viewMoreBtn.addEventListener ~ post:", post)
-        console.log("🚀 ~ viewMoreBtn.addEventListener ~ popup:", popup)
         popup.innerHTML = templatePopup(post);
         popup.classList.add("show");
 
@@ -1237,7 +1235,7 @@ templatePopup = (post) => {
   return ` 
       <div class="popup-content">
         <img
-          src="${post.image}"
+          src="https://demo.okhub-tech.com/${post.image}"
           alt=""
           class="feature__image"
         />
@@ -1490,7 +1488,6 @@ function viewMoreModel(sectionSelector, data, groupKey) {
   });
 }
 viewMoreModel("#top__best", data, "tam-hau");
-viewMoreModel("#manager", data, "manager-of-the-year");
 
 function lazyLoadImages() {
   const images = document.querySelectorAll("img[loading=lazy]");
