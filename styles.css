@@ -425,9 +425,11 @@ header {
   flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0.625rem;
+  width: fit-content;
+  margin-top: 2rem;
 }
 .section-header {
-  margin-bottom: 1.25rem;
+  /* margin-bottom: 1.25rem; */
 }
 .filter-tab button {
   margin-right: 0.69rem;
@@ -441,15 +443,14 @@ header {
   box-shadow: 0px -3px 37.5px 0px rgba(24, 219, 209, 0.31);
   color: #fff;
 }
-.grid-container {
+.section-group .container2 > .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-top: 3rem;
+  column-gap: 1.85rem;
+  row-gap: 2.87rem;
+  margin-top: 1.5rem;
 }
 .post-item {
-  border: 1px solid #ccc;
-  padding: 0.875rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -459,6 +460,8 @@ header {
 .post-item img {
   max-width: 100%;
   height: 20rem;
+  width: 100%;
+  object-fit: cover;
 }
 .post-item .post-title {
   color: #fff;
@@ -475,14 +478,12 @@ header {
   font-family: Oswald;
   font-size: 1rem;
   display: flex;
-  height: 2.375rem;
-  padding: 0.625rem 1.375rem 0.5rem 1.375rem;
+  padding: 0.375rem 1.375rem 0.5rem 1.375rem;
   align-items: flex-start;
   gap: 0.625rem;
   background-color: transparent;
   border-radius: 1.875rem;
   border: 0.75px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0px -3px 37.5px 0px rgba(24, 219, 209, 0.31);
 }
 .post-item .post-role {
   color: #fff;
@@ -527,10 +528,11 @@ header {
 }
 @media screen and (max-width: 767px) {
   .section-group .section-title {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
   }
   .section-group .filter-group {
     flex-direction: column;
+    margin-top: 0;
   }
   .section-group .filter-group input {
     height: 1.875rem;
@@ -541,13 +543,19 @@ header {
   }
 
   .section-group .filter-group .filter-tab {
-    margin-top: 0.75rem;
+    /* margin-top: 0.75rem; */
+    overflow-x: auto;
+    padding-top: 2rem;
+    padding-bottom: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .section-group .filter-group {
     border-radius: unset;
     background: unset;
     padding: 0;
+    width: 100%;
   }
   .section-group .section-title .title {
     color: #ffd966;
@@ -567,10 +575,14 @@ header {
     font-weight: 400;
     line-height: 1.50669rem; /* 150.671% */
   }
-  .grid-container {
+  .section-group .container2 > .grid-container {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0.81rem;
     row-gap: 1.5rem;
+    margin-top: 0;
+  }
+  .section-group.ba-group .container2 > .grid-container{
+    margin-top: 1.5rem;
   }
   .post-item img {
     height: 10.1875rem;
@@ -583,6 +595,7 @@ header {
   }
   .post-item .view-more-btn {
     font-size: 0.625rem;
+    padding: 0.375rem 0.875rem 0.5rem 0.875rem;
   }
 }
 .popup {
@@ -700,6 +713,7 @@ header {
     width: 100%;
     height: 20rem;
     margin-bottom: 3rem;
+    border-radius: 0.75rem;
   }
   .popup .content-left .name {
     font-size: 1.5rem;
@@ -717,4 +731,86 @@ header {
     right: 1.25rem;
     top: 1.25rem;
   }
+}
+
+
+/* ==================================================================================================*/
+/* #top__best,
+#manager{
+    display: none;
+} */
+#manager{
+    margin-bottom: 6rem;
+}
+.section-group{
+    padding: 0;
+    margin-bottom: 4.5rem;
+}
+.section-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.section-group .section-title{
+    /* margin-bottom: 2rem; */
+}
+.section-group .filter-group{
+    justify-content: center;
+    
+}
+.filter-tab button{
+    color: #FFF;
+    font-family: Oswald;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.filter-tab button:last-child{
+    margin-right: 0;
+}
+.section-group .container2 > .grid-container{
+    /* margin-top: 1.5rem; */
+}
+.post-item img{
+    height: 16.65063rem;
+}
+.image-footer{
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 767px) {
+    .image-footer{
+        height: 5rem;
+    }
+    .post-item img{
+        height: 10.1875rem;
+    }
+    .container{
+        max-width: unset;
+        width: 100%;
+    }
+    .section-group{
+        margin-bottom: 3.62rem;
+    }
+    .filter-tab button{
+        padding: 0.375rem 0.75rem 0.5rem 0.75rem;
+        display: flex;
+        flex-shrink: 0;
+    }
+    .filter-group{
+        position: relative;
+    }
+    .filter-group .overlay{
+        position: absolute;
+        width: 13.74831rem;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(270deg, #001609 0%, rgba(1, 23, 10, 0.00) 100%);
+        pointer-events: none;
+    }
 }
