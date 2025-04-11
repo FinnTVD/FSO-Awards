@@ -3,16 +3,22 @@
     font-size: 4.267vw;
   }
   /* Define */
-  .h2{
-    color: #FFD966;
+  .container {
+    width: calc(100% - 2rem);
+    max-width: calc(100% - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .h2 {
+    color: #ffd966;
     text-align: center;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 1.88338rem; /* 125.559% */
   }
-  .h3{
-    color: #FFD966;
+  .h3 {
+    color: #ffd966;
     text-align: center;
     font-size: 1rem;
     font-style: normal;
@@ -28,21 +34,228 @@
   }
   /* ----------------------end header---------------------- */
   /* ----------------------start top best---------------------- */
-  .top__best__content{
+  .top__best__content {
     width: 100%;
     padding: 0.2rem 1rem 0;
   }
   .top__best__content .description {
-    color: #FFF;
+    color: #fff;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.5rem; /* 171.429% */
     margin-top: 1.56rem;
   }
-  .top__best__heading{
+  .top__best__heading {
     margin-top: 3.97rem;
-
+  }
+  .top__best__image {
+    margin-top: 1.38rem;
+    height: 16.1rem;
+  }
+  .top__best__information {
+    width: 100%;
+    padding: 0 1.13rem;
+  }
+  .top__best__information .information__detail {
+    height: 5.56rem;
+    padding-top: 0.24rem;
+  }
+  .information__detail .award {
+    font-size: 0.3935rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.58919rem;
+    letter-spacing: -0.00394rem;
+  }
+  .information__detail.champion .award {
+    font-size: 0.47231rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.70725rem;
+    letter-spacing: -0.00475rem;
+  }
+  .information__detail .name {
+    font-size: 0.58113rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.87013rem;
+    letter-spacing: -0.00581rem;
+    margin-top: 0.1rem;
+  }
+  .information__detail.champion .name {
+    margin-top: 0.12rem;
+    font-size: 0.69756rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.0445rem;
+    letter-spacing: -0.007rem;
+  }
+  .information__detail .position {
+    font-size: 0.37344rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.55913rem;
+    letter-spacing: 0.00375rem;
+    margin-top: -0.19rem;
+  }
+  .information__detail.champion .position {
+    font-size: 0.44825rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.67113rem;
+    letter-spacing: 0.0045rem;
+    margin-top: -0.23rem;
+  }
+  .information__detail .btn__view__more {
+    border-radius: 1.875rem;
+    border: 0.75px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    height: 2.125rem;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    box-shadow: none;
   }
   /* ----------------------end top best---------------------- */
+  /* ----------------------start manager---------------------- */
+  #manager {
+    margin-top: 8rem;
+  }
+  #manager .container {
+    width: 100%;
+    max-width: 100%;
+  }
+  .grid__manager {
+    display: none;
+  }
+  .slides__manager {
+    display: block;
+    width: 100%;
+    height: 27.8rem;
+    position: relative;
+  }
+  .slogan__manager {
+    width: 7rem;
+    height: fit-content;
+    position: absolute;
+    top: 5.32rem;
+    left: 0.82rem;
+    pointer-events: none;
+  }
+  .slogan__manager img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .swiper__manager {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .swiper__manager .card__manager {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 3.28rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .swiper__manager .card__manager img {
+    width: 15.87819rem;
+    height: 21.66756rem;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
+  .swiper__manager .card__manager button {
+    border-radius: 1.875rem;
+    background: linear-gradient(90deg, #19e3d9 0%, #0e7d77 100%);
+    box-shadow: 0px -3px 37.5px 0px rgba(24, 219, 209, 0.31);
+    min-width: 6.6875rem;
+    height: 2.125rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper__manager .swiper-button-next,
+  .swiper__manager .swiper-button-prev {
+    width: 2.4rem !important;
+    height: 2.4rem !important;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .swiper__manager .swiper-button-next {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    left: auto;
+    top: auto;
+  }
+  .swiper__manager .swiper-button-prev {
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: auto;
+    top: auto;
+  }
+  .swiper__manager .swiper-button-next::after,
+  .swiper__manager .swiper-button-prev::after {
+    display: none;
+  }
+  .swiper__manager .swiper-button-next svg,
+  .swiper__manager .swiper-button-prev svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .swiper__manager .swiper-button-disabled {
+    opacity: 0.5 !important;
+  }
+  .swiper__manager .swiper-pagination-bullet {
+    background: #bdc1c6;
+    opacity: 0.6;
+  }
+  .swiper__manager
+    .swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    padding-bottom: 3px;
+  }
+  .swiper__manager .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #f9f9f9;
+    opacity: 1;
+  }
+  /* ----------------------end manager---------------------- */
+  /* ----------------------start search page---------------------- */
+  #search__page {
+    width: 17.3125rem;
+    height: 1.875rem;
+    padding: 0 0.5rem;
+  }
+  #search__page .icon {
+    width: 0.95263rem;
+    height: 0.95263rem;
+    margin-right: 0.3rem;
+  }
+  #search__page input {
+    color: #fff;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  #search__page input::placeholder {
+    color: #fff;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  /* ----------------------end search page---------------------- */
 }
