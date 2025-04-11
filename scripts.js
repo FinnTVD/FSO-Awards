@@ -1073,7 +1073,7 @@ function handleSection(sectionSelector, data, groupKey) {
       const postEl = document.createElement("div");
       postEl.className = "post-item";
       postEl.innerHTML = `
-            <img loading="lazy" data-src="https://demo.okhub-tech.com${post.image}" alt="${post.title}" />
+            <img src="${post.image}" alt="${post.title}" />
             <h4 class="post-title">${post.title}</h4>
             <p class="post-role">${post.role}</p>
             <button class="view-more-btn">View More</button>
@@ -1117,8 +1117,7 @@ templatePopup = (post) => {
   return ` 
       <div class="popup-content">
         <img
-          loading="lazy"
-          data-src="https://demo.okhub-tech.com${post.image}"
+          src="${post.image}"
           alt=""
           class="feature__image"
         />
@@ -1319,7 +1318,7 @@ function viewMoreModel(sectionSelector, data, groupKey) {
   } else {
     posts = [...groupData]
   }
-  
+
   viewMoreBtn.forEach((item, index) => {
     item.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -1367,7 +1366,7 @@ function lazyLoadImages() {
 }
 
 // Gọi hàm khi DOM đã sẵn sàng
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
   lazyLoadImages()
   // Swiper Manager
   new Swiper(".swiper__manager", {
@@ -1377,8 +1376,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
       el: ".swiper-pagination",
     },
     navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
   });
 });
