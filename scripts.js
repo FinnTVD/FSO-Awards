@@ -1047,10 +1047,10 @@ function handleSection(sectionSelector, data, groupKey) {
     gridContainer.innerHTML = "";
     let posts = [];
 
-    const groupData = groupKey?data[groupKey]:data;
+    const groupData = groupKey ? data[groupKey] : data;
     if (!groupData) return;
 
-    if(groupKey){
+    if (groupKey) {
       groupData.children.forEach((child) => {
         if (filter === "all" || filter === child.slug) {
           posts = posts.concat(child.posts);
@@ -1061,16 +1061,16 @@ function handleSection(sectionSelector, data, groupKey) {
           post.title.toLowerCase().includes(keyword.toLowerCase())
         );
       }
-  
+
       if (posts.length === 0) {
         gridContainer.innerHTML = "<p>No results found.</p>";
         return;
       }
-    }else{
+    } else {
       posts = [...groupData]
     }
 
-    
+
 
     posts.forEach((post) => {
       const postEl = document.createElement("div");
@@ -1101,28 +1101,23 @@ function handleSection(sectionSelector, data, groupKey) {
 
   renderPosts();
 
-  if(groupKey){
+  if (groupKey) {
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         filterBtns.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
         const filter = btn.dataset.filter;
-        renderPosts(filter, searchInput.value);
+        renderPosts(filter);
       });
     });
-  
-    searchInput.addEventListener(
-      "input",
-      debounce(() => {
-        const activeFilter = section.querySelector(".filter-tab button.active");
-        renderPosts(activeFilter.dataset.filter, searchInput.value);
-      }, 500)
-    );
-  }
-  
 
-  templatePopup = (post) => {
-    return ` 
+  }
+
+
+
+}
+templatePopup = (post) => {
+  return ` 
       <div class="popup-content">
         <img
           src="https://demo.okhub-tech.com${post.image}"
@@ -1163,9 +1158,7 @@ function handleSection(sectionSelector, data, groupKey) {
         <span>Close</span>
       </button>
     `;
-  };
-}
-
+};
 // Gọi hàm cho từng group
 handleSection(".pl-group", data, "pl-group");
 handleSection(".ba-group", data, "ba-group");
@@ -1175,38 +1168,37 @@ handleSection(".de-group", data, "delivery-group");
 let searchTrigger;
 
 function createScrollTrigger() {
-    // Kill previous instance if it exists
-    // Kill previous instance if it exists
-    if (searchTrigger) {
-      searchTrigger.kill(true); // Force kill all related animations
-      ScrollTrigger.getAll().forEach(st => st.kill()); // Kill all ScrollTriggers
-      ScrollTrigger.clearMatchMedia(); // Clear any matchMedia queries
+  // Kill previous instance if it exists
+  // Kill previous instance if it exists
+  if (searchTrigger) {
+    searchTrigger.kill(true); // Force kill all related animations
+    ScrollTrigger.getAll().forEach(st => st.kill()); // Kill all ScrollTriggers
+    ScrollTrigger.clearMatchMedia(); // Clear any matchMedia queries
   }
-    
-    // Create new instance
-    searchTrigger = ScrollTrigger.create({
-        trigger: ".section-group.pl-group",
-        start: "top 50%", 
-        endTrigger: "body",
-        end: "bottom top", 
-        pin: false,
-        invalidateOnRefresh: true,
-        scrub: true,
-        markers: true,
-        onToggle: (self) => {
-            gsap.to("#search__page", { 
-                autoAlpha: self.isActive ? 1 : 0, 
-                duration: 0.3,
-                overwrite: "auto"
-            });
-        },
-        onRefresh: (self) => {
-            // Update trigger points when refreshed
-            console.log("ScrollTrigger refreshed");
-        }
-    });
-    
-    return searchTrigger;
+
+  // Create new instance
+  searchTrigger = ScrollTrigger.create({
+    trigger: ".section-group.pl-group",
+    start: "top 50%",
+    endTrigger: "body",
+    end: "bottom top",
+    pin: false,
+    invalidateOnRefresh: true,
+    scrub: true,
+    onToggle: (self) => {
+      gsap.to("#search__page", {
+        autoAlpha: self.isActive ? 1 : 0,
+        duration: 0.3,
+        overwrite: "auto"
+      });
+    },
+    onRefresh: (self) => {
+      // Update trigger points when refreshed
+      console.log("ScrollTrigger refreshed");
+    }
+  });
+
+  return searchTrigger;
 }
 
 // Create initial trigger
@@ -1214,15 +1206,15 @@ createScrollTrigger();
 
 // Recreate trigger after page is fully loaded
 window.addEventListener('load', () => {
-    // Small delay to ensure all content is rendered
-    setTimeout(() => {
-        createScrollTrigger();
-    }, 500);
+  // Small delay to ensure all content is rendered
+  setTimeout(() => {
+    createScrollTrigger();
+  }, 500);
 });
 
 const inputSearch = document.querySelector("#input__search__page");
 if (inputSearch) {
-  inputSearch.addEventListener("input", debounce(()=> {
+  inputSearch.addEventListener("input", debounce(() => {
     const keyword = document.querySelector("#keyword");
     const result = document.querySelector("#result");
     if (keyword) {
@@ -1238,13 +1230,13 @@ if (inputSearch) {
         },
         ease: "power2.inOut",
         onComplete: () => {
-         setTimeout(() => {
-          result.style.display = "none";
-          createScrollTrigger();
-         }, 500);
+          setTimeout(() => {
+            result.style.display = "none";
+            createScrollTrigger();
+          }, 500);
         }
       });
-      
+
       return;
     } else {
       // Function to remove Vietnamese accents
@@ -1260,14 +1252,14 @@ if (inputSearch) {
       const dataFilter = dataArray.filter((item) => {
         const titleNoAccent = removeVietnameseAccents(item.title.toLowerCase());
         const roleNoAccent = removeVietnameseAccents(item.role.toLowerCase());
-        const contentNoAccent = item.content ? 
+        const contentNoAccent = item.content ?
           removeVietnameseAccents(item.content.replace(/<[^>]*>/g, '').toLowerCase()) : '';
 
         // Check if all search words are found in any field
         const matches = searchWords.map(word => {
-          return titleNoAccent.includes(word) || 
-                 roleNoAccent.includes(word) || 
-                 contentNoAccent.includes(word);
+          return titleNoAccent.includes(word) ||
+            roleNoAccent.includes(word) ||
+            contentNoAccent.includes(word);
         });
 
         // Calculate relevance score based on matches
@@ -1285,12 +1277,12 @@ if (inputSearch) {
         return bScore - aScore || aTitleNoAccent.localeCompare(bTitleNoAccent);
       });
 
-      if(result){
+      if (result) {
         result.style.display = "block";
       }
       handleSection(".result-group", dataFilter);
 
-      if(result){
+      if (result) {
         result.style.display = "block";
       }
       handleSection(".result-group", dataFilter);
@@ -1310,5 +1302,48 @@ if (inputSearch) {
       }, 50); // Small delay to ensure content is rendered
       return
     }
-  },500));
+  }, 500));
 }
+
+
+// view more 
+function viewMoreModel(sectionSelector, data, groupKey) {
+  console.log('dataa', data)
+  const section = document.querySelector(sectionSelector);
+  const popup = section.querySelector(".popup");
+  const popupContent = popup.querySelector(".popup-content");
+  const searchInput = section.querySelector(".search-input");
+  const filterBtns = section.querySelectorAll(".filter-tab button");
+  const viewMoreBtn = section.querySelectorAll(".btn__view__more");
+  let posts = [];
+  const groupData = groupKey ? data[groupKey] : data;
+  if (!groupData) return;
+  if (groupKey) {
+    groupData.children.forEach((child) => {
+      posts = posts.concat(child.posts);
+    });
+
+  } else {
+    posts = [...groupData]
+  }
+
+  const postsLatest = groupKey === 'tam-hau' ? [posts[0], posts[2], posts[1]] : [...posts]
+
+  viewMoreBtn.forEach((item, index) => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      popup.innerHTML = templatePopup(postsLatest[index]);
+      popup.classList.add("show");
+
+      const popupClose = popup.querySelector(".popup-close");
+      popupClose.addEventListener("click", () => {
+        popup.classList.remove("show");
+      });
+    });
+  });
+
+
+
+}
+viewMoreModel('.top__best', data, 'tam-hau');
+viewMoreModel('#manager', data, 'manager-of-the-year');
