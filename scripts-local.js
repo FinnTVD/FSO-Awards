@@ -1180,30 +1180,35 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
           postEl.className = "swiper-slide";
           postEl.innerHTML = `
               <div class="card__manager">
-                <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
-                <button class="view-more-btn">View More</button>
+                <img loading="lazy" data-src="${post.image}" alt="${post.title}" />
+                <button class="view-more-btn">View more</button>
               </div>
             `;
         } else {
           postEl.className = "card__manager";
           postEl.innerHTML = `
-                <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
-                <button class="view-more-btn">View More</button>
+                <img loading="lazy" data-src="${post.image}" alt="${post.title}" />
+                <button class="view-more-btn">View more</button>
             `;
         }
 
       } else {
         postEl.className = "post-item";
         postEl.innerHTML = `
-              <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
+              <img loading="lazy" data-src="${post.image}" alt="${post.title}" />
               <h4 class="post-title">${post.title}</h4>
               <p class="post-role">${post.role}</p>
-              <button class="view-more-btn">View More</button>
+              <button class="view-more-btn">View more</button>
             `;
       }
       const viewMoreBtn = postEl.querySelector(".view-more-btn");
 
       viewMoreBtn.addEventListener("click", (e) => {
+        const getAllPopup = document.querySelectorAll(".popup");
+        getAllPopup.forEach((popup) => {
+          popup.innerHTML = "";
+          popup.classList.remove("show");
+        });
         e.stopPropagation();
         popup.innerHTML = templatePopup(post);
         popup.classList.add("show");
@@ -1219,6 +1224,7 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
   }
 
   renderPosts();
+  lazyLoadImages();
 
   if (groupKey) {
     filterBtns.forEach((btn) => {
@@ -1227,6 +1233,7 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
         btn.classList.add("active");
         const filter = btn.dataset.filter;
         renderPosts(filter);
+        lazyLoadImages();
       });
     });
   }
@@ -1235,7 +1242,7 @@ templatePopup = (post) => {
   return ` 
       <div class="popup-content">
         <img
-          src="https://demo.okhub-tech.com/${post.image}"
+          src="${post.image}"
           alt=""
           class="feature__image"
         />
@@ -1244,7 +1251,7 @@ templatePopup = (post) => {
             <p class="name">${post.title}</p>
             <span class="role">${post.role}</span>
           </div>
-          <div class="main-content">
+          <div class="main-content custom-scroll">
             ${post.content}
           </div>
         </div>
@@ -1484,6 +1491,11 @@ function viewMoreModel(sectionSelector, data, groupKey) {
 
   viewMoreBtn.forEach((item, index) => {
     item.addEventListener("click", (e) => {
+      const getAllPopup = document.querySelectorAll(".popup");
+      getAllPopup.forEach((popup) => {
+          popup.innerHTML = "";
+          popup.classList.remove("show");
+      });
       e.stopPropagation();
       const postId = item.dataset.id;
       const postFind = posts.find((post) => post.ID == postId);
