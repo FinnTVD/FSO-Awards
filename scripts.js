@@ -1141,11 +1141,11 @@ function debounce(fn, delay = 300) {
 function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
   const section = document.querySelector(sectionSelector);
   const gridContainer = section.querySelector(".grid-container");
-  const popup = section.querySelector(isSlide?".popup-slide": ".popup");
+  const popup = section.querySelector(isSlide ? ".popup-slide" : ".popup");
   const filterBtns = section.querySelectorAll(".filter-tab button");
 
   function renderPosts(filter = "all", keyword = "") {
-    if(!isManager){
+    if (!isManager) {
       gridContainer.innerHTML = "";
     }
     let posts = [];
@@ -1175,8 +1175,8 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
 
     posts.forEach((post) => {
       const postEl = document.createElement("div");
-      if(isManager){
-        if(isSlide){
+      if (isManager) {
+        if (isSlide) {
           postEl.className = "swiper-slide";
           postEl.innerHTML = `
               <div class="card__manager">
@@ -1184,15 +1184,15 @@ function handleSection(sectionSelector, data, groupKey, isManager, isSlide) {
                 <button class="view-more-btn">View More</button>
               </div>
             `;
-        }else{
+        } else {
           postEl.className = "card__manager";
           postEl.innerHTML = `
                 <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
                 <button class="view-more-btn">View More</button>
             `;
         }
-        
-      }else{
+
+      } else {
         postEl.className = "post-item";
         postEl.innerHTML = `
               <img src="https://demo.okhub-tech.com/${post.image}" alt="${post.title}" />
@@ -1250,7 +1250,8 @@ templatePopup = (post) => {
         </div>
       </div>
       <button class="popup-close">
-        <svg
+        <div class="frame-close-pc">
+          <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
           height="14"
@@ -1271,12 +1272,21 @@ templatePopup = (post) => {
           />
         </svg>
         <span>Close</span>
+        </div>
+        <div class="frame-close-mb">
+          <svg xmlns="http://www.w3.org/2000/svg" width="168" height="19" viewBox="0 0 168 19" fill="none">
+            <path d="M0 -14H167.5L135 19H33L0 -14Z" fill="#BCBCBC" fill-opacity="0.11"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="26" viewBox="0 0 32 26" fill="none">
+            <path d="M16.0007 14.0007L9.33398 7.33398H22.6673L16.0007 14.0007Z" fill="white"/>
+          </svg>
+        </div>
       </button>
     `;
 };
 // Gọi hàm cho từng group
-handleSection("#manager", data, "manager-of-the-year",true);
-handleSection(".slides__manager", data, "manager-of-the-year",true,true);
+handleSection("#manager", data, "manager-of-the-year", true);
+handleSection(".slides__manager", data, "manager-of-the-year", true, true);
 handleSection(".pl-group", data, "pl-group");
 handleSection(".ba-group", data, "ba-group");
 handleSection(".de-group", data, "delivery-group");
@@ -1383,8 +1393,8 @@ if (inputSearch) {
             );
             const contentNoAccent = item.content
               ? removeVietnameseAccents(
-                  item.content.replace(/<[^>]*>/g, "").toLowerCase()
-                )
+                item.content.replace(/<[^>]*>/g, "").toLowerCase()
+              )
               : "";
 
             // Check if all search words are found in any field
