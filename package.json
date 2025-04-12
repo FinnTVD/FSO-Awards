@@ -1,0 +1,9 @@
+ {
+    "name": "fso-awards",
+    "version": "1.0.0",
+    "dependencies": {
+      "swiper": "^11.2.6",  
+      "gsap": "^3.12.7",  
+      "video.js": "^8.22.0" 
+    }
+  }
